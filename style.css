@@ -1,0 +1,23 @@
+:root { color-scheme: dark; font-family: Inter, ui-rounded, "Hiragino Kaku Gothic ProN", system-ui, sans-serif; --ink:#eafaff; --cyan:#55e7ff; --violet:#a77cff; }
+* { box-sizing:border-box; }
+html, body { margin:0; width:100%; height:100%; overflow:hidden; overscroll-behavior:none; }
+body { background:radial-gradient(circle at 50% 12%, #15314b 0, #07111f 46%, #030811 100%); color:var(--ink); touch-action:none; }
+body::before { content:""; position:fixed; inset:0; opacity:.16; pointer-events:none; background-image:linear-gradient(#72ddff15 1px, transparent 1px),linear-gradient(90deg,#72ddff15 1px,transparent 1px); background-size:28px 28px; mask-image:linear-gradient(to bottom,#000,transparent 80%); }
+button { color:inherit; font:inherit; cursor:pointer; -webkit-tap-highlight-color:transparent; }
+.game-shell { height:100vh; height:100dvh; max-width:560px; margin:auto; padding:max(10px,env(safe-area-inset-top)) 14px max(8px,env(safe-area-inset-bottom)); display:grid; grid-template-rows:auto auto minmax(0,1fr) auto; gap:8px; }
+header { display:flex; align-items:center; justify-content:space-between; min-height:34px; }
+.brand { font-weight:900; font-size:.78rem; letter-spacing:.22em; }.brand span{color:var(--cyan);text-shadow:0 0 12px #45dcff}.actions{display:flex;gap:7px}
+.icon-button { width:34px;height:34px;border:1px solid #70ddff55;border-radius:10px;background:#0e2638aa;box-shadow:inset 0 0 12px #55e7ff0f; }
+.hud { display:grid;grid-template-columns:1.4fr 1fr 1.4fr;padding:8px 13px;border:1px solid #77ddff2d;border-radius:12px;background:#081827cc;box-shadow:0 8px 30px #0008; }
+.hud div{text-align:center;border-right:1px solid #a8ebff1c}.hud div:last-child{border:0}.hud small{display:block;font-size:.54rem;letter-spacing:.2em;color:#8ca9ba}.hud strong{display:block;margin-top:2px;font-size:.9rem;letter-spacing:.12em}.hud #lives{color:#ff7dc8;font-size:.72rem;text-shadow:0 0 8px #ff4eae}
+.arena { position:relative;min-height:0;overflow:hidden;border:1px solid #75dbff3d;border-radius:18px;background:linear-gradient(180deg,#071a2ccc,#040b16ee);box-shadow:inset 0 0 40px #28a9db12,0 18px 45px #0009; touch-action:none; }
+.arena::after{content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;box-shadow:inset 0 0 20px #60dbff16}
+canvas{display:block;width:100%;height:100%}
+.message { position:absolute;z-index:3;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:radial-gradient(circle,#122b45dd,#030916f2 70%);opacity:0;visibility:hidden;transition:.25s;padding:24px; }
+.message.show{opacity:1;visibility:visible}.message h1{margin:8px 0;font-style:italic;font-size:clamp(2.2rem,10vw,3.8rem);line-height:.9;letter-spacing:-.05em;text-shadow:3px 3px 0 #8c45de,0 0 25px #4adfff}.message p{color:#abc5d3;line-height:1.7;font-size:.8rem}.message #eyebrow{color:var(--cyan);font-size:.58rem;letter-spacing:.32em}
+.primary { margin-top:12px;padding:13px 30px;border:0;border-radius:99px;background:linear-gradient(100deg,#22cbea,#9563ef);font-weight:900;letter-spacing:.08em;box-shadow:0 0 24px #41d9fa66; }
+.toast{position:absolute;z-index:2;left:50%;top:54%;transform:translate(-50%,-50%) scale(.8);font-weight:900;letter-spacing:.12em;color:#fff;opacity:0;pointer-events:none;text-shadow:0 0 14px #62eaff}.toast.pop{animation:toast .9s ease-out}@keyframes toast{20%{opacity:1;transform:translate(-50%,-50%) scale(1.08)}100%{opacity:0;transform:translate(-50%,-75%) scale(1)}}
+footer{display:flex;justify-content:space-between;align-items:center;min-height:32px;color:#7895a7;font-size:.65rem;padding:0 4px}footer p{margin:0}.touch-icon{color:var(--cyan);font-size:1rem}#restartButton{border:0;background:transparent;color:#a7c2d1;font-size:.67rem}
+@media (orientation:landscape) and (max-height:600px){.game-shell{max-width:900px;grid-template-columns:155px 1fr 155px;grid-template-rows:auto 1fr;gap:8px}.game-shell header{grid-column:1;grid-row:1;align-self:start}.hud{grid-column:1;grid-row:2;display:flex;flex-direction:column;justify-content:center}.hud div{border-right:0;border-bottom:1px solid #a8ebff1c;padding:10px 0}.arena{grid-column:2;grid-row:1/3}footer{grid-column:3;grid-row:1/3;flex-direction:column;justify-content:center;gap:25px;text-align:center}.brand{font-size:.62rem}}
+@media (min-width:700px) and (orientation:portrait){.game-shell{max-width:620px;padding:18px}.brand{font-size:.9rem}.hud{padding:12px}.message p{font-size:1rem}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
